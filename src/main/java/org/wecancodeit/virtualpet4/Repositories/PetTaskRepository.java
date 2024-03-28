@@ -1,7 +1,11 @@
 package org.wecancodeit.virtualpet4.Repositories;
 
-import org.wecancodeit.virtualpet4.Models.PetTaskScheduleModel;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.List;
 
+import org.wecancodeit.virtualpet4.Models.PetTaskScheduleModel;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class PetTaskRepository extends ClientHttp {
@@ -19,6 +23,22 @@ public class PetTaskRepository extends ClientHttp {
         return result;
     }
 
+    public Collection<PetTaskScheduleModel> getAll(String urlPath) throws Exception {
+        List<PetTaskScheduleModel> petTaskList = null;
+        try {
+            String jsonString = getUrl(urlPath);
+            // convert JSON string to List
+            petTaskList = objectMapper.readValue(jsonString, new TypeReference<List<PetTaskScheduleModel>>() {
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return petTaskList;
+    }
+
+  
+
+   
    
     
 }

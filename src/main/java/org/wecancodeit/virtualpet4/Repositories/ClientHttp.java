@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public abstract class ClientHttp { // entity is placeholder for a class e.g OrganicPetModel
+public abstract class ClientHttp {
 
     private final String baseUrlString;
 
@@ -13,7 +13,7 @@ public abstract class ClientHttp { // entity is placeholder for a class e.g Orga
         this.baseUrlString = baseUrlString;
     }
 
-    protected String getUrl(String urlString) throws Exception { //protected - only an inherited class can use this
+    protected String getUrl(String urlString) throws Exception { // protected - only an inherited class can use this
         HttpURLConnection connection = null; // if it errors out, it will skip try/catch and go to the exception
         StringBuffer response = new StringBuffer(); // just storing vars up here
 
