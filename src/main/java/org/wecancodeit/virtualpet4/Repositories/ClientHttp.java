@@ -64,10 +64,4 @@ public abstract class ClientHttp { // entity is placeholder for a class e.g Orga
         return response.toString();
     }
 
-    protected String CreateObject(String json){
-        HttpURLConnection connection = null; // if it errors out, it will skip try/catch and go to the exception
-        StringBuffer response = new StringBuffer(); // just storing vars up here
-        
-
-    }
 }

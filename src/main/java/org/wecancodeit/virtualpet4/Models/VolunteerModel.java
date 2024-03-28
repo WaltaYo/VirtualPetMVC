@@ -40,5 +40,10 @@ public class VolunteerModel extends ContactModel {
         return super.toString() + "VolunteerModel []";
     }
 
+    public VolunteerModel getById(long l) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getById'");
+    }
+
     
 }
