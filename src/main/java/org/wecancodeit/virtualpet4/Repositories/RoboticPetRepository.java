@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.wecancodeit.virtualpet4.Models.OrganicPetModel;
 import org.wecancodeit.virtualpet4.Models.RoboticPetModel;
 
 import com.fasterxml.jackson.core.type.TypeReference;
