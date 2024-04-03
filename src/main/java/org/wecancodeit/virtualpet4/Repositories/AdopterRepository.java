@@ -3,14 +3,19 @@ package org.wecancodeit.virtualpet4.Repositories;
 import java.io.IOException;
 import java.util.*;
 
-
+import org.springframework.stereotype.Service;
 import org.wecancodeit.virtualpet4.Models.AdopterModel;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Service
 public class AdopterRepository extends ClientHttp {
 
     private ObjectMapper objectMapper = new ObjectMapper();
+
+    public AdopterRepository() {
+        super("http://localhost:8080/api/v1/adopters/");
+    }
 
     public AdopterRepository(String baseUrlString) {
         super(baseUrlString);
@@ -23,7 +28,7 @@ public class AdopterRepository extends ClientHttp {
         return result;
     }
 
-     public Collection<AdopterModel> getAll(String urlPath) throws Exception {
+    public Collection<AdopterModel> getAll(String urlPath) throws Exception {
         List<AdopterModel> adopterList = null;
         try {
             String jsonString = getUrl(urlPath);
@@ -35,6 +40,5 @@ public class AdopterRepository extends ClientHttp {
         }
         return adopterList;
     }
-
 
 }

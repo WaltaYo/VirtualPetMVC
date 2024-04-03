@@ -42,10 +42,10 @@ public class ShelterModel extends ContactModel {
      * @param imageURL       shelter image url
      * @param shelterWebSite shelter website
      */
-    public ShelterModel(String name, String addressLine1, String addressLine2, String city, String state,
+    public ShelterModel(Long id, String name, String addressLine1, String addressLine2, String city, String state,
             String zip, String phoneNumber, String email, String imageURL,
             String shelterWebSite) {
-        super(name, addressLine1, addressLine2, city, state, zip, phoneNumber, email, imageURL);
+        super(id, name, addressLine1, addressLine2, city, state, zip, phoneNumber, email, imageURL);
         this.shelterWebSite = shelterWebSite;
         this.organicPets = new ArrayList<>();
         this.roboticPets = new ArrayList<>();

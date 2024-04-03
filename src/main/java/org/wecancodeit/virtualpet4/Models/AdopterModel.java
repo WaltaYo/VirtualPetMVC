@@ -38,10 +38,10 @@ public class AdopterModel extends ContactModel {
      * @param adoptionStatus
      * @param notes
      */
-    public AdopterModel(String name, String addressLine1, String addressLine2, String city, String state, String zip,
+    public AdopterModel(Long id, String name, String addressLine1, String addressLine2, String city, String state, String zip,
             String phoneNumber, String email, String imageURL, PetTypeEnum preferredPetType,
             AdoptionStatusEnum adoptionStatus, String notes) {
-        super(name, addressLine1, addressLine2, city, state, zip, phoneNumber, email, imageURL);
+        super(id, name, addressLine1, addressLine2, city, state, zip, phoneNumber, email, imageURL);
         this.preferredPetType = preferredPetType;
         this.adoptionStatus = adoptionStatus;
         this.notes = notes;

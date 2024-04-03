@@ -26,9 +26,9 @@ public class VolunteerModel extends ContactModel {
      * @param email        volunteer's email
      * @param imageURL     volunteer's image url
      */
-    public VolunteerModel(String name, String addressLine1, String addressLine2, String city, String state,
+    public VolunteerModel(Long id, String name, String addressLine1, String addressLine2, String city, String state,
             String zip, String phoneNumber, String email, String imageURL) {
-        super(name, addressLine1, addressLine2, city, state,
+        super(id, name, addressLine1, addressLine2, city, state,
                 zip, phoneNumber, email, imageURL);
     }
 
@@ -40,9 +40,9 @@ public class VolunteerModel extends ContactModel {
         return super.toString() + "VolunteerModel []";
     }
 
-    public VolunteerModel getById(long l) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getById'");
+    public VolunteerModel getById(VolunteerModel id) {
+        return id;
+    
     }
 
     

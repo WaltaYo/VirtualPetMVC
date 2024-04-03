@@ -3,14 +3,21 @@ package org.wecancodeit.virtualpet4.Repositories;
 import java.io.IOException;
 import java.util.*;
 
+import org.springframework.stereotype.Service;
 import org.wecancodeit.virtualpet4.Models.PetMaintenanceModel;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Service
 public class PetMaintenanceRepository extends ClientHttp {
 
     private ObjectMapper objectMapper = new ObjectMapper();
+
+    public PetMaintenanceRepository() {
+        super("http://localhost:8080/api/v1/petmaintenances/");
+
+    }
 
     public PetMaintenanceRepository(String baseUrlString) {
         super(baseUrlString);

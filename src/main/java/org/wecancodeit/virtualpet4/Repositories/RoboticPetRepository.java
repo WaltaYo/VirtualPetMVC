@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
 import org.wecancodeit.virtualpet4.Models.OrganicPetModel;
 import org.wecancodeit.virtualpet4.Models.RoboticPetModel;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Service
 public class RoboticPetRepository extends ClientHttp {
 
     private ObjectMapper objectMapper = new ObjectMapper();
@@ -18,6 +20,12 @@ public class RoboticPetRepository extends ClientHttp {
         super(baseUrlString);
        
     }
+
+    public RoboticPetRepository() {
+        super("http://localhost:8080/api/v1/roboticpets/");
+       
+    }
+
 
     public RoboticPetModel getById (Long id) throws Exception{
         String model = getUrl(id.toString());

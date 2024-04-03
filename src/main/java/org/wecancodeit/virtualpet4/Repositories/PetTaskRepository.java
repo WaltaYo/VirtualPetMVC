@@ -4,13 +4,21 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
 import org.wecancodeit.virtualpet4.Models.PetTaskScheduleModel;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Service
 public class PetTaskRepository extends ClientHttp {
 
     private ObjectMapper objectMapper = new ObjectMapper(); 
+
+    public PetTaskRepository() {
+        super("http://localhost:8080/api/v1/schedules/");
+   
+    }
+
     
     public PetTaskRepository(String baseUrlString) {
         super(baseUrlString);

@@ -45,8 +45,9 @@ public abstract class ContactModel {
      * @param email        email
      * @param imageURL     image URL
      */
-    public ContactModel(String name, String addressLine1, String addressLine2, String city, String state,
+    public ContactModel(Long id, String name, String addressLine1, String addressLine2, String city, String state,
             String zip, String phoneNumber, String email, String imageURL) {
+        this.id= id;
         this.name = name;
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
