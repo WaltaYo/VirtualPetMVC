@@ -4,8 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/VP4.css}">
+    <style>
+
+    </style>
 </head>
 <body>
-    Home
+   <h1>Shelters</h1>
+   <table border="1px" >
+    <thead>
+        <tr>
+            <th>Shelter Name</th>
+            <th>Phone Number</th>
+            <th>Address(1) </th>
+            <th>Address(2) </th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Detail</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tr th:each = "shelter : ${shelters}">
+        <td th:text = "${shelter.name}"></td>
+        <td th:text = "${shelter.phoneNumber}"></td>
+        <td th:text = "${shelter.addressLine1}"></td>
+        <td th:text = "${shelter.addressLine2}"></td>
+         <td th:text = "${shelter.city}"></td>
+         <td th:text = "${shelter.state}"></td>
+        <td th:text = "${shelter.zip}"></td>
+       
+        <td><a class="btn" th:href="@{/{id}(id=${shelter.ID})}">Detail</a> </td>
+        <td><a class="btn" th:href="@{edit/{id}(id=${shelter.ID})}">Edit</a> </td>
+        <td><a class="btn" th:href="@{delete/{id}(id=${shelter.ID})}">Delete</a> </td>
+    </tr>
+   </table>
 </body>
 </html>
