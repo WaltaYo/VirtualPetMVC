@@ -19,13 +19,9 @@ public class ShelterRepository extends ClientHttp {
 
     }
 
-    
-
     public ShelterRepository(String baseUrlString) {
-       super(baseUrlString);
+        super(baseUrlString);
     }
-
-
 
     public ShelterModel getById(Long id) throws Exception {
         String model = getUrl(id.toString());
@@ -46,4 +42,21 @@ public class ShelterRepository extends ClientHttp {
         return shelterList;
     }
 
+    public boolean deleteById(Long id) throws Exception {
+       return  deleteById(id);
+
+    }
+
+    public ShelterModel saveShelter(ShelterModel model) throws Exception {
+        try {
+            String json = objectMapper.writeValueAsString(model);
+            String result = saveObject(json);
+            objectMapper.readValue(result, new TypeReference<ShelterModel>() {
+            });
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return model;
+    }
 }

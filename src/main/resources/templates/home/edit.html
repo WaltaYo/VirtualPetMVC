@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/VP4.css}">
+
+</head>
+
+<body>
+    <div th:replace="~{./fragments/headerFragment :: header}"></div>
+    <div class="content">
+
+    <h1>Edit/ADD</h1>
+    <form action=" "th:action="@{/}" th:object="${shelter}"method="post">
+        <!-- <input type = "hidden" th:field="*{shelter.ID}"/> -->
+       <label>Shelter Name</label> 
+        <!-- <input type="text" th:field="*{shelter.name}"> -->
+
+        <!-- <label>Phone Number</label>
+        <input type="text" th:field="*{shelter.phoneNumber}">
+        <br>
+
+        <label>Address(1)</label>
+        <input type="text" th:field="*{shelter.addressLine1}">
+        <br>
+
+        <label>Address(2)</label>
+        <input type="text" th:field="*{shelter.addressLine2}">
+        <br>
+
+        <label>City</label>
+        <input type="text" th:field="*{shelter.city}">
+        <br>
+
+        <label>State</label>
+        <input type="text" th:field="*{shelter.state}">
+        <br>
+
+        <label>Zip</label>
+        <input type="text" th:field="*{shelter.zip}">
+        <br> -->
+
+
+        <button type="submit">Save</button>
+    
+        <button><a th:href="@{/}" class="cancelButton"> Cancel </a></button>
+      </form>
+    </div>
+    <div th:replace="~{./fragments/footerFragment :: footer}"></div>
+</body>
+</html>

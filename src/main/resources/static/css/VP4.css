@@ -1,9 +1,13 @@
-*{
-    border-color: lightgreen;
+body{
+    background-color: lightgrey;
   }
-
-  body{
-    background-color: slateblue;
+  .main_table{
+    border-collapse: collapse;
+    border: 1px solid black;
+  }
+  .main_td {
+    border: 1px solid black;
+    padding: 8px; /* Optional: Add padding for better readability */
   }
   /* Define the button class */
   .btn {
@@ -44,16 +48,72 @@
       background-color: #c82333;
       /* Darker red color */
   }
+  /* styles.css */
 
+/* Style the header */
+/* styles.css */
 
+/* Style the header */
+header {
+    background-color: #333; /* Dark grey background */
+    color: #fff; /* White text */
+    padding: 10px; /* Add some padding */
+    position: fixed; /* Fix the header at the top of the page */
+    width: 100%; /* Full width */
+    top: 0; /* Stick to the top of the page */
+    z-index: 1000; /* Ensure the header stays on top of other content */
+}
+.content {
+    margin-top: 100px; /* Adjust according to header height */
+    height: calc(100vh - 120px); /* Set height to fill the viewport minus header height */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+}
+.viewport {
+    width: 300px; /* Set width of the viewport */
+    height: 200px; /* Set height of the viewport */
+    border: 1px solid #ccc; /* Add border to the viewport */
+}
 
+/* Style the heading */
+header h1 {
+    margin: 0; /* Remove default margin */
+}
 
+/* Style the navigation menu */
+header nav {
+    margin-top: 10px; /* Add some space between heading and navigation */
+}
 
+/* Style the navigation links */
+header nav ul {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
+}
 
+header nav ul li {
+    display: inline; /* Display list items horizontally */
+    margin-right: 10px; /* Add some space between list items */
+}
 
+header nav ul li a {
+    color: #fff; /* White text for links */
+    text-decoration: none; /* Remove underline from links */
+}
 
+header nav ul li a:hover {
+    text-decoration: underline; /* Underline links on hover */
+}
+footer {
+    background-color: #333; /* Dark grey background */
+    color: #fff; /* White text */
+    padding: 10px; /* Add some padding */
+    position: fixed; /* Fix the footer at the bottom of the page */
+    width: 100%; /* Full width */
+    bottom: 0; /* Stick to the bottom of the page */
+}
 
-
-
-
-
+/* Center the text in the footer */
+footer p {
+    margin: 0; /* Remove default margin */
+    text-align: center; /* Center align the text */
+}

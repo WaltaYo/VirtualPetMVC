@@ -25,7 +25,7 @@ public class ShelterModel extends ContactModel {
      * Default Constructor
      */
     public ShelterModel() {
-        super();
+       
     }
 
     /**
