@@ -14,33 +14,33 @@
 
     <h1>Edit/ADD</h1>
     <form action=" "th:action="@{/}" th:object="${shelter}"method="post">
-        <!-- <input type = "hidden" th:field="*{shelter.ID}"/> -->
+        <input type = "hidden" th:field="*{ID}"/>
        <label>Shelter Name</label> 
-        <!-- <input type="text" th:field="*{shelter.name}"> -->
+        <input type="text" th:field="*{name}">
 
-        <!-- <label>Phone Number</label>
-        <input type="text" th:field="*{shelter.phoneNumber}">
+        <label>Phone Number</label>
+        <input type="text" th:field="*{phoneNumber}">
         <br>
 
         <label>Address(1)</label>
-        <input type="text" th:field="*{shelter.addressLine1}">
+        <input type="text" th:field="*{addressLine1}">
         <br>
 
         <label>Address(2)</label>
-        <input type="text" th:field="*{shelter.addressLine2}">
+        <input type="text" th:field="*{addressLine2}">
         <br>
 
         <label>City</label>
-        <input type="text" th:field="*{shelter.city}">
+        <input type="text" th:field="*{city}">
         <br>
 
         <label>State</label>
-        <input type="text" th:field="*{shelter.state}">
+        <input type="text" th:field="*{state}">
         <br>
 
         <label>Zip</label>
-        <input type="text" th:field="*{shelter.zip}">
-        <br> -->
+        <input type="text" th:field="*{zip}">
+        <br>
 
 
         <button type="submit">Save</button>
