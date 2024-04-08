@@ -24,7 +24,9 @@ public abstract class ContactModel {
 
     private String email;
 
-    private String imageURL;
+    private String imageUrl;
+
+    private String website;
 
     /**
      * Default Constructor
@@ -46,8 +48,8 @@ public abstract class ContactModel {
      * @param imageURL     image URL
      */
     public ContactModel(Long id, String name, String addressLine1, String addressLine2, String city, String state,
-            String zip, String phoneNumber, String email, String imageURL) {
-        this.id= id;
+            String zip, String phoneNumber, String email, String imageUrl, String website) {
+        this.id = id;
         this.name = name;
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
@@ -56,7 +58,9 @@ public abstract class ContactModel {
         this.zip = zip;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.imageURL = imageURL;
+        this.imageUrl = imageUrl;
+        this.website = website;
+
     }
 
     /**
@@ -154,8 +158,12 @@ public abstract class ContactModel {
      * 
      * @return image URL
      */
-    public String getImageURL() {
-        return imageURL;
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public String getWebsite() {
+        return website;
     }
 
     /**
@@ -163,9 +171,9 @@ public abstract class ContactModel {
      */
     @Override
     public String toString() {
-        return "ContactModel [contactID=" + id + ", name=" + name + ", addressLine1=" + addressLine1
-                + ", addressLine2=" + addressLine2 + ", city=" + city + ", state=" + state + ", zip=" + zip
-                + ", phoneNumber=" + phoneNumber + ", email=" + email + ", imageURL=" + imageURL + "]";
+        return "ContactModel [id=" + id + ", name=" + name + ", addressLine1=" + addressLine1 + ", addressLine2="
+                + addressLine2 + ", city=" + city + ", state=" + state + ", zip=" + zip + ", phoneNumber=" + phoneNumber
+                + ", email=" + email + ", imageUrl=" + imageUrl + ", website=" + website + "]";
     }
 
 }

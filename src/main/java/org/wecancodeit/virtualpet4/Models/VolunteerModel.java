@@ -1,10 +1,6 @@
 package org.wecancodeit.virtualpet4.Models;
 
-import java.util.Collection;
-
 public class VolunteerModel extends ContactModel {
-
-     private Collection<ShelterModel> shelterModels;
 
     /**
      * Default Constructor
@@ -27,9 +23,9 @@ public class VolunteerModel extends ContactModel {
      * @param imageURL     volunteer's image url
      */
     public VolunteerModel(Long id, String name, String addressLine1, String addressLine2, String city, String state,
-            String zip, String phoneNumber, String email, String imageURL) {
+            String zip, String phoneNumber, String email, String imageUrl, String website) {
         super(id, name, addressLine1, addressLine2, city, state,
-                zip, phoneNumber, email, imageURL);
+                zip, phoneNumber, email, imageUrl, website);
     }
 
     /**

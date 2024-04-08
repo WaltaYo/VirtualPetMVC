@@ -1,14 +1,12 @@
 package org.wecancodeit.virtualpet4.Controllers;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.wecancodeit.virtualpet4.Dto.ShelterDto;
 import org.wecancodeit.virtualpet4.Models.ShelterModel;
 import org.wecancodeit.virtualpet4.Repositories.ShelterRepository;
-
-import jakarta.annotation.Resource;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,69 +14,107 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 @Controller
 @RequestMapping("/")
 public class ShelterController {
 
- 
   private final ShelterRepository shelterRepository;
 
-
-
-public ShelterController() {
-  shelterRepository = new ShelterRepository("http://localhost:8080/api/v1/shelters/");
+  /**
+   * Establish ShelterRepository
+   */
+  public ShelterController() {
+    shelterRepository = new ShelterRepository("http://localhost:8080/api/v1/shelters/");
   }
 
-@GetMapping()
-public String getAllShelters(Model model) throws Exception{
-    var shelters = shelterRepository.getAll("");
+  /**
+   * Method to get all shelters
+   * 
+   * @param model thymeleaf base model
+   * @return webpage showing all shelters
+   * @throws Exception
+   */
+  @GetMapping()
+  public String getAllShelters(Model model) throws Exception {
+    var shelters = shelterRepository.getAll(""); // establish shelter repository
     model.addAttribute("shelters", shelters);
     return "home/index";
-}
+  }
 
-@GetMapping("/{id}")
-public String getShelter(@PathVariable Long id, Model model) throws Exception{
+  /**
+   * Method to get shelter by id
+   * 
+   * @param id
+   * @param model
+   * @return webpage showing details of single shelter
+   * @throws Exception
+   */
+  @GetMapping("/{id}")
+  public String getShelter(@PathVariable Long id, Model model) throws Exception {
     ShelterModel shelter = shelterRepository.getById(id);
     model.addAttribute("shelter", shelter);
     return "home/detail";
 
-}
+  }
 
-@GetMapping("/edit/{id}")
-public String editShelter(@PathVariable Long id, Model model) throws Exception{
+  /**
+   * Method to edit shelter details
+   * 
+   * @param id    get shelter by id
+   * @param model
+   * @return webpage with open fields allowing user to change text description
+   * @throws Exception
+   */
+  @GetMapping("/edit/{id}")
+  public String editShelter(@PathVariable Long id, Model model) throws Exception {
     ShelterModel shelter = shelterRepository.getById(id);
-    model.addAttribute("shelter", shelter);
+    ShelterDto dto = new ShelterDto(shelter);
+    model.addAttribute("shelter", dto);
+    model.addAttribute("title", "Edit Shelter");
     return "home/edit";
 
-}
+  }
 
-@PostMapping
-public String saveShelter(@ModelAttribute("shelter") ShelterModel model) throws Exception{
-  shelterRepository.saveShelter(model);
-  return "redirect:/";
-}
+  /**
+   * Method to add a new shelter
+   * 
+   * @param model
+   * @return webpage with field to submit details of new shelter
+   * @throws Exception
+   */
+  @GetMapping("create")
+  public String createShelter(Model model) throws Exception {
+    ShelterDto dto = new ShelterDto();
+    model.addAttribute("shelter", dto);
+    model.addAttribute("title", "Create Shelter");
+    return "home/edit";
+  }
 
-@GetMapping("/delete/{id}")
-public String deleteShelter(@PathVariable Long id, Model model) throws Exception {
-  ShelterModel shelter =shelterRepository.getById(id);
-  model.addAttribute("shelter", shelter);
-  return "home/confirm/Delete";
-}
+  @PostMapping
+  public String saveShelter(@ModelAttribute("shelter") ShelterDto dto) throws Exception {
+    ShelterModel shelter = dto.convertToModel();
+    shelterRepository.saveShelter(shelter);
+    return "redirect:/";
+  }
 
-@GetMapping("/delete/confirmDelete/{id}")
-public String confirmDeleteShelter(@PathVariable Long id, Model model) throws Exception{
-  shelterRepository.deleteById(id);
-  Collection <ShelterModel> shelters = shelterRepository.getAll("");
-  model.addAttribute("shelter", shelters);
-  return "redirect:/";
-}
+  @GetMapping("/delete/{id}")
+  public String deleteShelter(@PathVariable Long id, Model model) throws Exception {
+    ShelterModel shelter = shelterRepository.getById(id);
+    model.addAttribute("shelter", shelter);
+    return "home/confirmDelete";
+  }
 
-@GetMapping("/about")
-public String getAbout (Model model){
-  return "home/about";
-}
+  @GetMapping("/delete/confirmDelete/{id}")
+  public String confirmDeleteShelter(@PathVariable Long id, Model model) throws Exception {
+    shelterRepository.deleteById(id);
+    Collection<ShelterModel> shelters = shelterRepository.getAll("");
+    model.addAttribute("shelter", shelters);
+    return "redirect:/";
+  }
 
-    
+  @GetMapping("/about")
+  public String getAbout(Model model) {
+    return "home/about";
+  }
 
 }

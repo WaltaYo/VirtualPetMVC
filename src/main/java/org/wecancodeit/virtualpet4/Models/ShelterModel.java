@@ -8,8 +8,6 @@ import java.util.*;
 
 public class ShelterModel extends ContactModel {
 
-    private String shelterWebSite;
-
     private Collection<OrganicPetModel> organicPets;
 
 
@@ -28,36 +26,12 @@ public class ShelterModel extends ContactModel {
        
     }
 
-    /**
-     * Parameterized Constructor
-     * 
-     * @param name           shelter name
-     * @param addressLine1   shelter address line 1
-     * @param addressLine2   shelter address line 2
-     * @param city           shelter city
-     * @param state          shelter state (abbreviated)
-     * @param zip            shelter zip code
-     * @param phoneNumber    shelter phone number
-     * @param email          shelter email
-     * @param imageURL       shelter image url
-     * @param shelterWebSite shelter website
-     */
-    public ShelterModel(Long id, String name, String addressLine1, String addressLine2, String city, String state,
-            String zip, String phoneNumber, String email, String imageURL,
-            String shelterWebSite) {
-        super(id, name, addressLine1, addressLine2, city, state, zip, phoneNumber, email, imageURL);
-        this.shelterWebSite = shelterWebSite;
-        this.organicPets = new ArrayList<>();
-        this.roboticPets = new ArrayList<>();
-    }
 
-    /**
-     * Method to get the shelter website
-     * 
-     * @return shelter website
-     */
-    public String getShelterWebSite() {
-        return shelterWebSite;
+    public ShelterModel(Long id, String name, String addressLine1, String addressLine2, String city, String state,
+            String zip, String phoneNumber, String email, String imageUrl, String website) {
+        super(id, name, addressLine1, addressLine2, city, state, zip, phoneNumber, email, imageUrl, website);
+      
+    
     }
 
     /**
@@ -96,13 +70,13 @@ public class ShelterModel extends ContactModel {
         return volunteers;
     }
 
-    /**
-     * Override method for toString
-     */
+
     @Override
     public String toString() {
-        return super.toString() + "ShelterModel [shelterWebSite=" + shelterWebSite + "]";
+        return "ShelterModel [organicPets=" + organicPets + ", roboticPets=" + roboticPets + ", adopters=" + adopters
+                + ", volunteers=" + volunteers + "]";
     }
+
 
 }
 

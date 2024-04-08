@@ -3,7 +3,6 @@ package org.wecancodeit.virtualpet4.Models;
 import org.wecancodeit.virtualpet4.Models.Enums.AdoptionStatusEnum;
 import org.wecancodeit.virtualpet4.Models.Enums.PetTypeEnum;
 
-
 /**
  * Class that models the adopters
  */
@@ -19,7 +18,7 @@ public class AdopterModel extends ContactModel {
      * Default Constructor
      */
     public AdopterModel() {
-        
+
     }
 
     /**
@@ -38,10 +37,11 @@ public class AdopterModel extends ContactModel {
      * @param adoptionStatus
      * @param notes
      */
-    public AdopterModel(Long id, String name, String addressLine1, String addressLine2, String city, String state, String zip,
-            String phoneNumber, String email, String imageURL, PetTypeEnum preferredPetType,
+    public AdopterModel(Long id, String name, String addressLine1, String addressLine2, String city, String state,
+            String zip,
+            String phoneNumber, String email, String imageUrl, String website, PetTypeEnum preferredPetType,
             AdoptionStatusEnum adoptionStatus, String notes) {
-        super(id, name, addressLine1, addressLine2, city, state, zip, phoneNumber, email, imageURL);
+        super(id, name, addressLine1, addressLine2, city, state, zip, phoneNumber, email, imageUrl, website);
         this.preferredPetType = preferredPetType;
         this.adoptionStatus = adoptionStatus;
         this.notes = notes;

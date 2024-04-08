@@ -43,7 +43,8 @@ public class ShelterRepository extends ClientHttp {
     }
 
     public boolean deleteById(Long id) throws Exception {
-       return  deleteById(id);
+        deleteObject(id);
+        return true;
 
     }
 
@@ -59,4 +60,5 @@ public class ShelterRepository extends ClientHttp {
 
         return model;
     }
+
 }

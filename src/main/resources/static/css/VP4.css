@@ -1,5 +1,6 @@
 body{
     background-color: lightgrey;
+    display: flexbox;
   }
   .main_table{
     border-collapse: collapse;
