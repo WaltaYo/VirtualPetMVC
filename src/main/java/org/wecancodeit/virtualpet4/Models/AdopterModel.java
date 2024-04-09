@@ -41,7 +41,7 @@ public class AdopterModel extends ContactModel {
             String zip,
             String phoneNumber, String email, String imageUrl, String website, PetTypeEnum preferredPetType,
             AdoptionStatusEnum adoptionStatus, String notes) {
-        super(id, name, addressLine1, addressLine2, city, state, zip, phoneNumber, email, imageUrl, website);
+        super(id, name, addressLine1, addressLine2, city, state, zip, phoneNumber, email, imageUrl);
         this.preferredPetType = preferredPetType;
         this.adoptionStatus = adoptionStatus;
         this.notes = notes;

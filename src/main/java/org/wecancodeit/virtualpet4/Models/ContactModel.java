@@ -26,7 +26,6 @@ public abstract class ContactModel {
 
     private String imageUrl;
 
-    private String website;
 
     /**
      * Default Constructor
@@ -48,7 +47,7 @@ public abstract class ContactModel {
      * @param imageURL     image URL
      */
     public ContactModel(Long id, String name, String addressLine1, String addressLine2, String city, String state,
-            String zip, String phoneNumber, String email, String imageUrl, String website) {
+            String zip, String phoneNumber, String email, String imageUrl) {
         this.id = id;
         this.name = name;
         this.addressLine1 = addressLine1;
@@ -59,7 +58,7 @@ public abstract class ContactModel {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.imageUrl = imageUrl;
-        this.website = website;
+        
 
     }
 
@@ -162,10 +161,7 @@ public abstract class ContactModel {
         return imageUrl;
     }
 
-    public String getWebsite() {
-        return website;
-    }
-
+   
     /**
      * Override method for toString
      */
@@ -173,7 +169,7 @@ public abstract class ContactModel {
     public String toString() {
         return "ContactModel [id=" + id + ", name=" + name + ", addressLine1=" + addressLine1 + ", addressLine2="
                 + addressLine2 + ", city=" + city + ", state=" + state + ", zip=" + zip + ", phoneNumber=" + phoneNumber
-                + ", email=" + email + ", imageUrl=" + imageUrl + ", website=" + website + "]";
+                + ", email=" + email + ", imageUrl=" + imageUrl +  "]";
     }
 
 }

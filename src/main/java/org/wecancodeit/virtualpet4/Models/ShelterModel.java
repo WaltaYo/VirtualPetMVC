@@ -19,6 +19,8 @@ public class ShelterModel extends ContactModel {
 
     private Collection<VolunteerModel> volunteers;
 
+    private String website;
+
     /**
      * Default Constructor
      */
@@ -29,10 +31,22 @@ public class ShelterModel extends ContactModel {
 
     public ShelterModel(Long id, String name, String addressLine1, String addressLine2, String city, String state,
             String zip, String phoneNumber, String email, String imageUrl, String website) {
-        super(id, name, addressLine1, addressLine2, city, state, zip, phoneNumber, email, imageUrl, website);
-      
+        super(id, name, addressLine1, addressLine2, city, state, zip, phoneNumber, email, imageUrl);
+        this.website = website;
     
     }
+
+    
+
+    public String getWebsite() {
+        return website;
+    }
+
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
 
     /**
      * Method to get the organic pets in the shelter
