@@ -67,7 +67,7 @@ public abstract class ContactModel {
      * 
      * @return ID
      */
-    public long getID() {
+    public long getId() {
         return id;
     }
 

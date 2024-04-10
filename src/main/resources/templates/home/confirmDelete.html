@@ -27,7 +27,7 @@
     <Strong><label>Zip: </label></Strong>
     <label th:text = "${shelter.zip}"></label><br>
 
-   <button type="button" id="confirm"><a th:href="@{confirmDelete/{id}(id=${shelter.ID})}" class="confirmButton"> Confirm?</a></button>
+   <button type="button" id="confirm"><a th:href="@{confirmDelete/{id}(id=${shelter.id})}" class="confirmButton"> Confirm?</a></button>
     <button id="cancel"><a th:href="@{/}" class="cancelButton"> Cancel </a></button>
 
 

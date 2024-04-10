@@ -13,6 +13,6 @@ public class VolunteerTest {
     public void getById() throws Exception{
         VolunteerRepository volunteer = new VolunteerRepository("http://localhost:8080/api/v1/volunteers/");
         VolunteerModel model = volunteer.getById(1L);
-        assertEquals(1, model.getID());
+        assertEquals(1, model.getId());
     } 
 }

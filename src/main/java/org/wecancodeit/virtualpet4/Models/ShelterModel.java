@@ -8,18 +8,15 @@ import java.util.*;
 
 public class ShelterModel extends ContactModel {
 
+    /**
+     * Below are the models that are going to populate the shelter
+     */
     private Collection<OrganicPetModel> organicPets;
-
-
     private Collection<RoboticPetModel> roboticPets;
-
-
     private Collection<AdopterModel> adopters;
-
-
     private Collection<VolunteerModel> volunteers;
 
-    private String website;
+    private String website; // for shelter website
 
     /**
      * Default Constructor
@@ -28,7 +25,20 @@ public class ShelterModel extends ContactModel {
        
     }
 
-
+    /**
+     * Parametarized constructor 
+     * @param id
+     * @param name
+     * @param addressLine1
+     * @param addressLine2
+     * @param city
+     * @param state
+     * @param zip
+     * @param phoneNumber
+     * @param email
+     * @param imageUrl
+     * @param website
+     */
     public ShelterModel(Long id, String name, String addressLine1, String addressLine2, String city, String state,
             String zip, String phoneNumber, String email, String imageUrl, String website) {
         super(id, name, addressLine1, addressLine2, city, state, zip, phoneNumber, email, imageUrl);
@@ -37,12 +47,18 @@ public class ShelterModel extends ContactModel {
     }
 
     
-
+    /**
+     * Method to get website
+     * @return  website
+     */
     public String getWebsite() {
         return website;
     }
 
-
+    /**
+     * Method to set website
+     * @return this website
+     */
     public void setWebsite(String website) {
         this.website = website;
     }

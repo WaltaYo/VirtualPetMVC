@@ -15,14 +15,14 @@ public class AdopterTest {
     public void getById() throws Exception{
         AdopterRepository adopter = new AdopterRepository("http://localhost:8080/api/v1/adopters/");
         AdopterModel model = adopter.getById(1L);
-        assertEquals(1, model.getID());
+        assertEquals(1, model.getId());
     }
 
     @Test
     public void getAll() throws Exception {
         AdopterRepository adopter = new AdopterRepository("http://localhost:8080/api/v1/adopters/");
         Collection<AdopterModel> model = adopter.getAll("");
-        assertEquals(model.iterator().next().getID(), 1);
+        assertEquals(model.iterator().next().getId(), 1);
 
     }
     

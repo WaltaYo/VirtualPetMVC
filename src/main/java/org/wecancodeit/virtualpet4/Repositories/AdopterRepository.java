@@ -5,6 +5,8 @@ import java.util.*;
 
 import org.springframework.stereotype.Service;
 import org.wecancodeit.virtualpet4.Models.AdopterModel;
+import org.wecancodeit.virtualpet4.Models.ShelterModel;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -39,6 +41,19 @@ public class AdopterRepository extends ClientHttp {
             e.printStackTrace();
         }
         return adopterList;
+    }
+
+    public AdopterModel saveAdopter(AdopterModel model) throws Exception {
+        try {
+            String json = objectMapper.writeValueAsString(model);
+            String result = saveObject(json);
+            objectMapper.readValue(result, new TypeReference<AdopterModel>() {
+            });
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return model;
     }
 
 }

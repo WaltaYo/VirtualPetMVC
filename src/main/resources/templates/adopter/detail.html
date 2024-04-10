@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/VP4.css}">
+</head>
+
+<body>
+    <div th:replace="~{./fragments/headerFragment :: header}"></div>
+    <div class="content">
+        <h1>Detail</h1>
+        <label>Name: </label>
+        <label th:text="${adopter.name}"></label><br>
+
+        <label>Address(1): </label>
+        <label th:text="${adopter.addressLine1}"></label><br>
+
+        <label>Address(2): </label>
+        <label th:text="${adopter.addressLine2}"></label><br>
+
+        <label>City: </label>
+        <label th:text="${adopter.city}"></label><br>
+
+        <label>State: </label>
+        <label th:text="${adopter.state}"></label><br>
+
+        <label>Zip: </label>
+        <label th:text="${adopter.zip}"></label><br>
+
+        <label>Phone Number: </label>
+        <label th:text="${adopter.phoneNumber}"></label><br>
+
+        <label>Email: </label>
+        <label th:text="${adopter.email}"></label><br>
+
+        <label>Image: </label>
+        <label th:text="${adopter.imageUrl}"></label><br>
+
+        <label>Preferred Pet: </label>
+        <label th:text="${adopter.preferredPetType}"></label><br>
+
+        <label>Adoption Status: </label>
+        <label th:text="${adopter.adoptionStatus}"></label><br>
+
+        <label>Notes: </label>
+        <label th:text="${adopter.notes}"></label><br>
+
+        <button><a th:href="@{/adopter}" class="cancelButton"> Go Back </a></button>
+
+</body>
+
+</html>

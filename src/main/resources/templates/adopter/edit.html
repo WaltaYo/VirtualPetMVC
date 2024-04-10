@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+    <div th:replace="~{./fragments/headerFragment :: header}"></div>
+    <div class="content">
+
+    <h1>Edit/ADD</h1>
+    
+    <form action=" "th:action="@{/adopter}" th:object="${adopter}"method="post">
+        <input type = "hidden" th:field="*{Id}"/>
+
+        <label>Name: </label>
+        <input type="text" th:field="*{adopter.name}">
+
+        <label>Address(1): </label>
+        <input type="text" th:field="*{adopter.addressLine1}">
+        <br>
+
+        <label>Address(2): </label>
+        <input type="text" th:field="*{adopter.addressLine2}">
+        <br>
+
+        <label>City: </label>
+        <input type="text" th:field="*{adopter.city}">
+        <br>
+
+        <label>State: </label>
+        <input type="text" th:field="*{adopter.state}">
+        <br>
+
+        <label>Zip: </label>
+        <input type="text" th:field="*{adopter.zip}">
+        <br>
+
+        <label>Phone Number: </label>
+        <input type="text" th:field="*{adopter.phoneNumber}">
+        <br>
+
+        <label>Email: </label>
+        <input type="text" th:field="*{adopter.email}">
+        <br>
+
+        <label>Image: </label>
+        <input type="text" th:field="*{adopter.imageUrl}">
+        <br>
+
+        <label>Preferred Pet: </label>
+        <select th:field="*{adopter.preferredPetType}">
+            <option th:each="p : ${prefType}" th:value ="${p}" th:text="${p}"/>
+        </select><br>
+
+
+        <label>Adoption Status: </label>
+        <select th:field="*{adopter.adoptionStatus}">
+            <option th:each="p : ${adoptionStatus}" th:value ="${p}" th:text="${p}"/>
+        </select><br>
+
+        <label>Notes: </label>
+        <input type="text" th:field="*{adopter.notes}">
+        <br>
+
+
+        <button type="submit">Save</button>
+    
+        <button><a th:href="@{/adopter}" class="cancelButton"> Cancel </a></button>
+      </form>
+    </div>
+    <div th:replace="~{./fragments/footerFragment :: footer}"></div>
+
+</body>
+</html>

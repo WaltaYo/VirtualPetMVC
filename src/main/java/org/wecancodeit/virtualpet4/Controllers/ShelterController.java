@@ -76,6 +76,20 @@ public class ShelterController {
   }
 
   /**
+   * Method to save shelter details
+   * 
+   * @param dto
+   * @return
+   * @throws Exception
+   */
+  @PostMapping
+  public String saveShelter(@ModelAttribute("shelter") ShelterDto dto) throws Exception {
+    ShelterModel shelter = dto.convertToModel();
+    shelterRepository.saveShelter(shelter);
+    return "redirect:/";
+  }
+
+  /**
    * Method to add a new shelter
    * 
    * @param model
@@ -90,13 +104,13 @@ public class ShelterController {
     return "home/edit";
   }
 
-  @PostMapping
-  public String saveShelter(@ModelAttribute("shelter") ShelterDto dto) throws Exception {
-    ShelterModel shelter = dto.convertToModel();
-    shelterRepository.saveShelter(shelter);
-    return "redirect:/";
-  }
-
+  /**
+   * Method to delete  shelter by id
+   * @param id
+   * @param model
+   * @return webpage asking for confirmation
+   * @throws Exception
+   */
   @GetMapping("/delete/{id}")
   public String deleteShelter(@PathVariable Long id, Model model) throws Exception {
     ShelterModel shelter = shelterRepository.getById(id);
@@ -104,6 +118,13 @@ public class ShelterController {
     return "home/confirmDelete";
   }
 
+  /**
+   * Method to confirm deletetion of shelter by id
+   * @param id
+   * @param model
+   * @return  home/index
+   * @throws Exception
+   */
   @GetMapping("/delete/confirmDelete/{id}")
   public String confirmDeleteShelter(@PathVariable Long id, Model model) throws Exception {
     shelterRepository.deleteById(id);
@@ -112,6 +133,11 @@ public class ShelterController {
     return "redirect:/";
   }
 
+  /**
+   * Method to view "About me" details
+   * @param model
+   * @return
+   */
   @GetMapping("/about")
   public String getAbout(Model model) {
     return "home/about";

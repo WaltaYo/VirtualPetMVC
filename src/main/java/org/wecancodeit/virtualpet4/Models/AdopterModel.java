@@ -39,7 +39,7 @@ public class AdopterModel extends ContactModel {
      */
     public AdopterModel(Long id, String name, String addressLine1, String addressLine2, String city, String state,
             String zip,
-            String phoneNumber, String email, String imageUrl, String website, PetTypeEnum preferredPetType,
+            String phoneNumber, String email, String imageUrl, PetTypeEnum preferredPetType,
             AdoptionStatusEnum adoptionStatus, String notes) {
         super(id, name, addressLine1, addressLine2, city, state, zip, phoneNumber, email, imageUrl);
         this.preferredPetType = preferredPetType;

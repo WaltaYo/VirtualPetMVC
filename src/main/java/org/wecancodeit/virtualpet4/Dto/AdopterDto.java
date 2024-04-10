@@ -1,10 +1,11 @@
 package org.wecancodeit.virtualpet4.Dto;
 
-import org.wecancodeit.virtualpet4.Models.ShelterModel;
+import org.wecancodeit.virtualpet4.Models.AdopterModel;
+import org.wecancodeit.virtualpet4.Models.Enums.*;
 
-public class ShelterDto {
+public class AdopterDto {
 
-    private long id;
+    private Long id;
     private String name;
     private String addressLine1;
     private String addressLine2;
@@ -14,12 +15,14 @@ public class ShelterDto {
     private String phoneNumber;
     private String email;
     private String imageUrl;
-    private String website;
+    private PetTypeEnum preferredPetType;
+    private AdoptionStatusEnum adoptionStatus;
+    private String notes;
 
     /**
      * Blank constructor
      */
-    public ShelterDto() {
+    public AdopterDto() {
     }
 
     /**
@@ -35,10 +38,13 @@ public class ShelterDto {
      * @param phoneNumber
      * @param email
      * @param imageUrl
-     * @param website
+     * @param preferredPetType
+     * @param adoptionStatus
+     * @param notes
      */
-    public ShelterDto(Long id, String name, String addressLine1, String addressLine2, String city,
-            String state, String zip, String phoneNumber, String email, String imageUrl, String website) {
+    public AdopterDto(Long id, String name, String addressLine1, String addressLine2, String city,
+     String state, String zip, String phoneNumber, String email, String imageUrl, 
+     PetTypeEnum preferredPetType, AdoptionStatusEnum adoptionStatus, String notes) {
         this.id = id;
         this.name = name;
         this.addressLine1 = addressLine1;
@@ -49,15 +55,17 @@ public class ShelterDto {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.imageUrl = imageUrl;
-        this.website = website;
+        this.preferredPetType = preferredPetType;
+        this.adoptionStatus = adoptionStatus;
+        this.notes = notes;
     }
 
     /**
-     * Parametarized constructor to get details from ShelterModel
+     * Parametarized constructor to get details from AdopterModel
      * 
-     * @param model ShelterModel
+     * @param model
      */
-    public ShelterDto(ShelterModel model) {
+    public AdopterDto(AdopterModel model) {
         this.id = model.getId();
         this.name = model.getName();
         this.addressLine1 = model.getAddressLine1();
@@ -68,39 +76,29 @@ public class ShelterDto {
         this.phoneNumber = model.getPhoneNumber();
         this.email = model.getEmail();
         this.imageUrl = model.getImageUrl();
-        this.website = model.getWebsite();
-
+        this.preferredPetType = model.getPreferredPetType();
+        this.adoptionStatus = model.getAdoptionStatus();
+        this.notes = model.getNotes();
     }
 
-    /**
-     * Method to convert ShelterDto to ShelterModel
+     /**
+     * Method to convert Adopterdto to AdopterModel
      * 
      * @return
      */
-    public ShelterModel convertToModel() {
-        ShelterModel shelter = new ShelterModel(this.getId(), this.getName(), this.getAddressLine1(),
-         this.getAddressLine2(), this.getCity(), this.getState(), this.getZip(), this.getPhoneNumber(), 
-         this.getEmail(), this.getImageUrl(), this.getWebsite());
-        return shelter;
+    public AdopterModel convertToModel() {
+        AdopterModel adopter = new AdopterModel(this.getId(), this.getName(), this.getAddressLine1(),
+                this.getAddressLine2(), this.getCity(), this.getState(), this.getZip(), this.getPhoneNumber(),
+                this.getEmail(), this.getImageUrl(), this.getPreferredPetType(), this.getAdoptionStatus(), 
+                this.getNotes());
+        return adopter;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public String getWebsite() {
-        return website;
-    }
-
-    public void setWebsite(String website) {
-        this.website = website;
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -170,6 +168,34 @@ public class ShelterDto {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public PetTypeEnum getPreferredPetType() {
+        return preferredPetType;
+    }
+
+    public void setPreferredPetType(PetTypeEnum preferredPetType) {
+        this.preferredPetType = preferredPetType;
+    }
+
+    public AdoptionStatusEnum getAdoptionStatus() {
+        return adoptionStatus;
+    }
+
+    public void setAdoptionStatus(AdoptionStatusEnum adoptionStatus) {
+        this.adoptionStatus = adoptionStatus;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
 }
