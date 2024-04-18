@@ -1,36 +1,32 @@
 package org.wecancodeit.virtualpet4.Controllers;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.wecancodeit.virtualpet4.Dto.AdopterDto;
-import org.wecancodeit.virtualpet4.Dto.ShelterDto;
 import org.wecancodeit.virtualpet4.Models.AdopterModel;
 import org.wecancodeit.virtualpet4.Models.ShelterModel;
 import org.wecancodeit.virtualpet4.Models.Enums.AdoptionStatusEnum;
 import org.wecancodeit.virtualpet4.Models.Enums.PetTypeEnum;
 import org.wecancodeit.virtualpet4.Repositories.AdopterRepository;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.wecancodeit.virtualpet4.Repositories.ShelterRepository;
+
 
 @Controller
 @RequestMapping("/adopter")
 public class AdopterController {
 
     private final AdopterRepository adopterRepository;
+    private final ShelterRepository shelterRepository;
 
     /**
      * Establish AdopterRepository
      */
     public AdopterController() {
         adopterRepository = new AdopterRepository("http://localhost:8080/api/v1/adopters/");
+        shelterRepository = new ShelterRepository("http://localhost:8080/api/v1/shelters/");
     }
 
     /**
@@ -59,7 +55,8 @@ public class AdopterController {
     @GetMapping("/{id}")
     public String getAdopter(@PathVariable Long id, Model model) throws Exception {
         AdopterModel adopter = adopterRepository.getById(id);
-        model.addAttribute("adopter", adopter);
+        AdopterDto dto = new AdopterDto(adopter);
+        model.addAttribute("adopter", dto);  //add model attribute for shelter
         return "adopter/detail";
     }
      /**
@@ -73,6 +70,9 @@ public class AdopterController {
     public String createAdopter(Model model) throws Exception {
         AdopterDto dto = new AdopterDto();
         model.addAttribute("adopter", dto);
+        model.addAttribute("title", "Edit Adopter");
+
+        model.addAttribute("shelters", shelterRepository.getLookUp());
 
         List<String> prefType = enumToList(PetTypeEnum.class);
         model.addAttribute("prefType", prefType);
@@ -101,9 +101,12 @@ public class AdopterController {
         AdopterDto dto = new AdopterDto(adopter);
         model.addAttribute("adopter", dto);
 
+        //find the shelter they are assoc with
+        model.addAttribute("shelters", shelterRepository.getLookUp());
+
+        //drop downs for the enums
         List<String> prefType = enumToList(PetTypeEnum.class);
         model.addAttribute("prefType", prefType);
-
         List<String> adoptionStatus = enumToList(AdoptionStatusEnum.class);
         model.addAttribute("adoptionStatus", adoptionStatus);
 
@@ -119,8 +122,10 @@ public class AdopterController {
     @PostMapping
     public String saveAdopter(@ModelAttribute("adopter") AdopterDto dto) throws Exception {
         AdopterModel adopter = dto.convertToModel();
+        ShelterModel shelter = shelterRepository.getById(dto.getShelterId());
+        adopter.setShelterModel(shelter);
         adopterRepository.saveAdopter(adopter);
-        return "redirect:/";
+        return "redirect:/adopter";
     }
     
       /**

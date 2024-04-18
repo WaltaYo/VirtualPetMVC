@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/VP4.css}">
 </head>
 <body>
     <div th:replace="~{./fragments/headerFragment :: header}"></div>
@@ -12,56 +13,66 @@
     <h1>Edit/ADD</h1>
     
     <form action=" "th:action="@{/adopter}" th:object="${adopter}"method="post">
-        <input type = "hidden" th:field="*{Id}"/>
+        <input type = "hidden" th:field="*{id}"/>
 
         <label>Name: </label>
-        <input type="text" th:field="*{adopter.name}">
+        <input type="text" th:field="*{name}">
+        <br>
 
         <label>Address(1): </label>
-        <input type="text" th:field="*{adopter.addressLine1}">
+        <input type="text" th:field="*{addressLine1}">
         <br>
 
         <label>Address(2): </label>
-        <input type="text" th:field="*{adopter.addressLine2}">
+        <input type="text" th:field="*{addressLine2}">
         <br>
 
         <label>City: </label>
-        <input type="text" th:field="*{adopter.city}">
+        <input type="text" th:field="*{city}">
         <br>
 
         <label>State: </label>
-        <input type="text" th:field="*{adopter.state}">
+        <input type="text" th:field="*{state}">
         <br>
 
         <label>Zip: </label>
-        <input type="text" th:field="*{adopter.zip}">
+        <input type="text" th:field="*{zip}">
         <br>
 
         <label>Phone Number: </label>
-        <input type="text" th:field="*{adopter.phoneNumber}">
+        <input type="text" th:field="*{phoneNumber}">
         <br>
 
         <label>Email: </label>
-        <input type="text" th:field="*{adopter.email}">
+        <input type="text" th:field="*{email}">
         <br>
 
         <label>Image: </label>
-        <input type="text" th:field="*{adopter.imageUrl}">
+        <input type="text" th:field="*{imageUrl}">
         <br>
 
         <label>Preferred Pet: </label>
-        <select th:field="*{adopter.preferredPetType}">
+        <select th:field="*{preferredPetType}">
             <option th:each="p : ${prefType}" th:value ="${p}" th:text="${p}"/>
         </select><br>
 
 
         <label>Adoption Status: </label>
-        <select th:field="*{adopter.adoptionStatus}">
+        <select th:field="*{adoptionStatus}">
             <option th:each="p : ${adoptionStatus}" th:value ="${p}" th:text="${p}"/>
         </select><br>
 
         <label>Notes: </label>
-        <input type="text" th:field="*{adopter.notes}">
+        <input type="text" th:field="*{notes}">
+        <br>
+
+        <label>Shelter</label>
+        <select th:field="*{shelterId}">
+            <option 
+            th:each="p : ${shelters}" 
+            th:value="${p.id}"
+            th:text="${p.name}"
+            /></select>
         <br>
 
 

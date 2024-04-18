@@ -68,6 +68,12 @@ public class AdopterModel extends ContactModel {
         return shelterModel;
     }
 
+    
+    
+    public void setShelterModel(ShelterModel shelterModel) {
+        this.shelterModel = shelterModel;
+    }
+
     /**
      * Override for the toString
      */
@@ -77,4 +83,5 @@ public class AdopterModel extends ContactModel {
                 + notes + ", shelterModel=" + shelterModel + "]";
     }
 
+   
 }

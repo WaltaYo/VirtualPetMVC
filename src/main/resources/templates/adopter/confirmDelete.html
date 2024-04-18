@@ -1,11 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Confirm/Delete</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/VP4.css}">
 </head>
+
 <body>
-    
+    <div th:replace="~{./fragments/headerFragment :: header}"></div>
+    <div class="content">
+
+        <h1>Delete???</h1>
+
+        <strong><label>Name: </label></strong>
+        <label th:text="${adopter.name}"></label><br>
+
+        <strong><label>Address(1): </label></strong>
+        <label th:text="${adopter.addressLine1}"></label><br>
+
+        <strong><label>Address(2): </label></strong>
+        <label th:text="${adopter.addressLine2}"></label><br>
+
+        <Strong><label>City: </label></Strong>
+        <label th:text="${adopter.city}"></label><br>
+
+        <Strong><label>State: </label></Strong>
+        <label th:text="${adopter.state}"></label><br>
+
+        <Strong><label>Zip: </label></Strong>
+        <label th:text="${adopter.zip}"></label><br>
+
+        <strong><label>Phone: </label></strong>
+        <label th:text="${adopter.phoneNumber}"></label><br>
+
+        <label>Email: </label>
+        <label th:text="${adopter.email}"></label><br>
+
+        <label>Image: </label>
+        <label th:text="${adopter.imageUrl}"></label><br>
+
+        <label>Preferred Pet: </label>
+        <label th:text="${adopter.preferredPetType}"></label><br>
+
+        <label>Adoption Status: </label>
+        <label th:text="${adopter.adoptionStatus}"></label><br>
+
+        <label>Notes: </label>
+        <label th:text="${adopter.notes}"></label><br>
+
+        <button type="button" id="confirm"><a th:href="@{/adopter/confirmDelete/{id}(id=${adopter.id})}" class="confirmButton">
+                Confirm?</a></button>
+        <button id="cancel"><a th:href="@{/adopter}" class="cancelButton"> Cancel </a></button>
+
+
+
+    </div>
+    <div th:replace="~{./fragments/footerFragment :: footer}"></div>
+
 </body>
+
 </html>

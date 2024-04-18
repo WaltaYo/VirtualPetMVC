@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.*;
 
 import org.springframework.stereotype.Service;
+import org.wecancodeit.virtualpet4.Dto.ShelterDto;
 import org.wecancodeit.virtualpet4.Models.ShelterModel;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -41,6 +42,17 @@ public class ShelterRepository extends ClientHttp {
         }
         return shelterList;
     }
+    
+    public Collection<ShelterDto> getLookUp() throws Exception {
+        List<ShelterDto> shelterDto =new ArrayList<>();
+        try {
+            String jsonString = getUrl("shelterLookUp");
+            shelterDto = objectMapper.readValue(jsonString, new TypeReference<List<ShelterDto>>() {
+            });
+        } catch (Exception e) {
+           e.printStackTrace();
+        } return shelterDto;
+    }
 
     public boolean deleteById(Long id) throws Exception {
         deleteObject(id);
@@ -60,5 +72,7 @@ public class ShelterRepository extends ClientHttp {
 
         return model;
     }
+
+   
 
 }

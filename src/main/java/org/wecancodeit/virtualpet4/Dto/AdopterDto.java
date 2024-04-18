@@ -1,6 +1,7 @@
 package org.wecancodeit.virtualpet4.Dto;
 
 import org.wecancodeit.virtualpet4.Models.AdopterModel;
+import org.wecancodeit.virtualpet4.Models.ShelterModel;
 import org.wecancodeit.virtualpet4.Models.Enums.*;
 
 public class AdopterDto {
@@ -18,6 +19,8 @@ public class AdopterDto {
     private PetTypeEnum preferredPetType;
     private AdoptionStatusEnum adoptionStatus;
     private String notes;
+    private ShelterModel shelterModel;
+    private Long shelterId;
 
     /**
      * Blank constructor
@@ -43,8 +46,8 @@ public class AdopterDto {
      * @param notes
      */
     public AdopterDto(Long id, String name, String addressLine1, String addressLine2, String city,
-     String state, String zip, String phoneNumber, String email, String imageUrl, 
-     PetTypeEnum preferredPetType, AdoptionStatusEnum adoptionStatus, String notes) {
+            String state, String zip, String phoneNumber, String email, String imageUrl,
+            PetTypeEnum preferredPetType, AdoptionStatusEnum adoptionStatus, String notes, ShelterModel shelterModel) {
         this.id = id;
         this.name = name;
         this.addressLine1 = addressLine1;
@@ -58,6 +61,7 @@ public class AdopterDto {
         this.preferredPetType = preferredPetType;
         this.adoptionStatus = adoptionStatus;
         this.notes = notes;
+        this.shelterModel = shelterModel;
     }
 
     /**
@@ -79,18 +83,37 @@ public class AdopterDto {
         this.preferredPetType = model.getPreferredPetType();
         this.adoptionStatus = model.getAdoptionStatus();
         this.notes = model.getNotes();
+        if (model.getShelterModel() != null) {
+            this.shelterModel = model.getShelterModel();
+            this.shelterId = this.shelterModel.getId();
+
+        }
+
     }
 
-     /**
+    /**
      * Method to convert Adopterdto to AdopterModel
      * 
      * @return
      */
     public AdopterModel convertToModel() {
-        AdopterModel adopter = new AdopterModel(this.getId(), this.getName(), this.getAddressLine1(),
-                this.getAddressLine2(), this.getCity(), this.getState(), this.getZip(), this.getPhoneNumber(),
-                this.getEmail(), this.getImageUrl(), this.getPreferredPetType(), this.getAdoptionStatus(), 
+        if (id == null) {
+            id = 0l;
+        }
+        AdopterModel adopter = new AdopterModel(this.getId(),
+                this.getName(),
+                this.getAddressLine1(),
+                this.getAddressLine2(),
+                this.getCity(),
+                this.getState(),
+                this.getZip(),
+                this.getPhoneNumber(),
+                this.getEmail(),
+                this.getImageUrl(),
+                this.getPreferredPetType(),
+                this.getAdoptionStatus(),
                 this.getNotes());
+        adopter.setShelterModel(this.shelterModel);
         return adopter;
     }
 
@@ -196,6 +219,22 @@ public class AdopterDto {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public ShelterModel getShelterModel() {
+        return shelterModel;
+    }
+
+    public void setShelterModel(ShelterModel shelterModel) {
+        this.shelterModel = shelterModel;
+    }
+
+    public Long getShelterId() {
+        return shelterId;
+    }
+
+    public void setShelterId(Long shelterId) {
+        this.shelterId = shelterId;
     }
 
 }

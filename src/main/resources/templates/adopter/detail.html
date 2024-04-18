@@ -12,6 +12,11 @@
     <div th:replace="~{./fragments/headerFragment :: header}"></div>
     <div class="content">
         <h1>Detail</h1>
+
+        <label>Shelter: </label>
+        <label th:text="${adopter.shelterModel.name}"></label><br>
+
+        
         <label>Name: </label>
         <label th:text="${adopter.name}"></label><br>
 
@@ -47,6 +52,8 @@
 
         <label>Notes: </label>
         <label th:text="${adopter.notes}"></label><br>
+
+        
 
         <button><a th:href="@{/adopter}" class="cancelButton"> Go Back </a></button>
 
